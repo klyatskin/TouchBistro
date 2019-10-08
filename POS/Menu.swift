@@ -7,8 +7,7 @@
 //
 
 import Foundation
-
-typealias Item = (name: String, category: String, price: NSDecimalNumber, isTaxExempt: Bool)
+import CalculationPoS
 
 func category(_ category: String) -> (String, NSDecimalNumber) -> Item {
     return { name, price in
@@ -21,53 +20,53 @@ let mains = category("Mains")
 let drinks = category("Drinks")
 let alcohol = category("Alcohol")
 
-let appetizersCategory = [
+let appetizersCategory: [Item] = [
     appetizers("Nachos", 13.99),
     appetizers("Calamari", 11.99),
     appetizers("Caesar Salad", 10.99),
 ]
 
-let mainsCategory = [
+let mainsCategory: [Item] = [
     mains("Burger", 9.99),
     mains("Hotdog", 3.99),
     mains("Pizza", 12.99),
 ]
 
-let drinksCategory = [
+let drinksCategory: [Item] = [
     drinks("Water", 0),
     drinks("Pop", 2.00),
     drinks("Orange Juice", 3.00),
 ]
 
-let alcoholCategory = [
+let alcoholCategory: [Item] = [
     alcohol("Beer", 5.00),
     alcohol("Cider", 6.00),
     alcohol("Wine", 7.00),
 ]
 
-let tax1 = (label: "Tax 1 (5%)", amount: 0.05, isEnabled: true)
-let tax2 = (label: "Tax 2 (8%)", amount: 0.08, isEnabled: true)
-let alcoholTax = (label: "Alcohol Tax (10%)", amount: 0.10, isEnabled: true)
+let tax1: TaxType = ("Tax 1 (5%)", 0.05, EnableConstants.isEnabled)
+let tax2: TaxType = ("Tax 2 (8%)", 0.08, EnableConstants.isEnabled)
+let alcoholTax: TaxType = ("Alcohol Tax (10%)", 0.10, EnableConstants.isEnabled)
 
-let discount5Dollars = (label: "$5.00", amount: 5.00, isEnabled: false)
-let discount10Percent = (label: "10%", amount: 0.10, isEnabled: false)
-let discount20Percent = (label: "20%", amount: 0.20, isEnabled: false)
+let discount5Dollars: DiscountType = ("$5.00", 5.00, EnableConstants.isDisabled, DiscountConstants.isAbsoluteDiscount)
+let discount10Percent: DiscountType = ("10%", 0.10, EnableConstants.isDisabled, DiscountConstants.isPercentileDiscount)
+let discount20Percent: DiscountType = ("20%", 0.20, EnableConstants.isDisabled, DiscountConstants.isPercentileDiscount)
 
-var taxes = [
+var taxes: [TaxType] = [
     tax1,
     tax2,
     alcoholTax,
 ]
 
-var discounts = [
+var discounts: [DiscountType] = [
     discount5Dollars,
     discount10Percent,
     discount20Percent,
 ]
 
-var categories = [
-    (name: "Appetizers", items: appetizersCategory),
-    (name: "Mains", items: mainsCategory),
-    (name: "Drinks", items: drinksCategory),
-    (name: "Alcohol", items: alcoholCategory),
+var categories: [CategoryType] = [
+    ("Appetizers", appetizersCategory, nil),
+    ("Mains", mainsCategory, nil),
+    ("Drinks", drinksCategory, nil),
+    ("Alcohol", alcoholCategory, [alcoholTax]),
 ]

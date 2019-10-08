@@ -20,7 +20,11 @@
 		D177C6B5234BA9A6009EFEAB /* CalculationPoS.h in Headers */ = {isa = PBXBuildFile; fileRef = D177C6A5234BA9A6009EFEAB /* CalculationPoS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D177C6B8234BA9A6009EFEAB /* CalculationPoS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D177C6A3234BA9A6009EFEAB /* CalculationPoS.framework */; };
 		D177C6B9234BA9A6009EFEAB /* CalculationPoS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D177C6A3234BA9A6009EFEAB /* CalculationPoS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		D177C6C2234BAA04009EFEAB /* Calculation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D177C6C1234BAA04009EFEAB /* Calculation.swift */; };
+		D18AEF26234BDF61002EF248 /* Definitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18AEF25234BDF61002EF248 /* Definitions.swift */; };
+		D18AEF33234CFDB5002EF248 /* FinalCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18AEF32234CFDB5002EF248 /* FinalCheck.swift */; };
+		D18AEF34234D248D002EF248 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AEC101C226FAB31005F8B6B /* Menu.swift */; };
+		D18AEF35234D2A7F002EF248 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AEC101C226FAB31005F8B6B /* Menu.swift */; };
+		D18AEF36234D2A9C002EF248 /* CalculationPoS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D177C6A3234BA9A6009EFEAB /* CalculationPoS.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,7 +100,8 @@
 		D177C6AB234BA9A6009EFEAB /* CalculationPoSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CalculationPoSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D177C6B2234BA9A6009EFEAB /* CalculationPoSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculationPoSTests.swift; sourceTree = "<group>"; };
 		D177C6B4234BA9A6009EFEAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D177C6C1234BAA04009EFEAB /* Calculation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculation.swift; sourceTree = "<group>"; };
+		D18AEF25234BDF61002EF248 /* Definitions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Definitions.swift; sourceTree = "<group>"; };
+		D18AEF32234CFDB5002EF248 /* FinalCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalCheck.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +117,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D18AEF36234D2A9C002EF248 /* CalculationPoS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -200,7 +206,8 @@
 			isa = PBXGroup;
 			children = (
 				D177C6A5234BA9A6009EFEAB /* CalculationPoS.h */,
-				D177C6C1234BAA04009EFEAB /* Calculation.swift */,
+				D18AEF25234BDF61002EF248 /* Definitions.swift */,
+				D18AEF32234CFDB5002EF248 /* FinalCheck.swift */,
 				D177C6A6234BA9A6009EFEAB /* Info.plist */,
 			);
 			path = CalculationPoS;
@@ -433,6 +440,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D18AEF35234D2A7F002EF248 /* Menu.swift in Sources */,
 				6AEC1006226F8719005F8B6B /* POSTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -449,7 +457,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D177C6C2234BAA04009EFEAB /* Calculation.swift in Sources */,
+				D18AEF26234BDF61002EF248 /* Definitions.swift in Sources */,
+				D18AEF33234CFDB5002EF248 /* FinalCheck.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -457,6 +466,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D18AEF34234D248D002EF248 /* Menu.swift in Sources */,
 				D177C6B3234BA9A6009EFEAB /* CalculationPoSTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

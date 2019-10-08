@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import CalculationPoS
 
 class DiscountViewController: UITableViewController {
     let cellIdentifier = "Cell"
@@ -50,6 +51,7 @@ extension DiscountViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         viewModel.toggleDiscount(at: indexPath)
+        FinalCheck.finalCheckDidChange()
         tableView.reloadRows(at: [indexPath], with: .automatic)
     }
 }

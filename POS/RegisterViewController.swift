@@ -10,7 +10,7 @@ import UIKit
 import CalculationPoS
 
 
-class RegisterViewController: UIViewController {
+class RegisterViewController: UIViewController, finalCheckObserverProtocol {
     let cellIdentifier = "Cell"
     
     @IBOutlet weak var menuTableView: UITableView!
@@ -22,6 +22,7 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var totalLabel: UILabel!
     
     let viewModel = RegisterViewModel()
+    let finalCheck = FinalCheck()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,8 +31,19 @@ class RegisterViewController: UIViewController {
         orderTableView.dataSource = self
         menuTableView.delegate = self
         orderTableView.delegate = self
-        
-        totalLabel.text = CalculationPoS().abc()
+        FinalCheck.registerForCheckChange(object: self)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    @objc func finalCheckDidChange(notification: Notification) {
+        finalCheck.update(cart: viewModel.orderItems, discounts: discounts, taxes: taxes, categories: categories)
+        subtotalLabel.text = viewModel.string(from: finalCheck.subtotal)
+        totalLabel.text = viewModel.string(from: finalCheck.total)
+        discountsLabel.text = viewModel.string(from: finalCheck.discount)
+        taxLabel.text = viewModel.string(from: finalCheck.tax)
     }
     
     @IBAction func showTaxes() {
@@ -183,14 +195,22 @@ class RegisterViewModel {
     func addItemToOrder(at indexPath: IndexPath) -> IndexPath {
         let item = categories[indexPath.section].items[indexPath.row]
         orderItems.append(item)
+        FinalCheck.finalCheckDidChange()
         return IndexPath(row: orderItems.count - 1, section: 0)
     }
     
     func removeItemFromOrder(at indexPath: IndexPath) {
         orderItems.remove(at: indexPath.row)
+        FinalCheck.finalCheckDidChange()
     }
     
     func toggleTaxForOrderItem(at indexPath: IndexPath) {
         orderItems[indexPath.row].isTaxExempt = !orderItems[indexPath.row].isTaxExempt
+        FinalCheck.finalCheckDidChange()
+    }
+    
+    func string(from number:NSDecimalNumber) -> String? {
+        return formatter.string(from:number)
     }
 }
+

@@ -8,6 +8,7 @@
 
 import XCTest
 @testable import POS
+@testable import CalculationPoS
 
 class POSTests: XCTestCase {
 
@@ -31,4 +32,25 @@ class POSTests: XCTestCase {
         }
     }
 
+    func testDiscountViewModel() {
+        let discount5Dollars: DiscountType = ("$5.00", 5.00, EnableConstants.isDisabled, DiscountConstants.isAbsoluteDiscount)
+        let discount10Percent: DiscountType = ("10%", 0.10, EnableConstants.isDisabled, DiscountConstants.isPercentileDiscount)
+        let discount20Percent: DiscountType = ("20%", 0.20, EnableConstants.isDisabled, DiscountConstants.isPercentileDiscount)
+        
+        var discounts: [DiscountType] = [
+            discount5Dollars,
+            discount10Percent,
+            discount20Percent,
+        ]
+
+        let viewModel = DiscountViewModel()
+        XCTAssertTrue(viewModel.numberOfRows(in: 0) == discounts.count , "Should be equal!")
+        
+        for i in 0 ..< discounts.count {
+            let isEqual = viewModel.labelForDiscount(at: IndexPath(item: i, section: 0) ) == discounts[i].label
+            XCTAssertTrue(isEqual, "Should be equal!")
+            
+        }
+    }
+    
 }
