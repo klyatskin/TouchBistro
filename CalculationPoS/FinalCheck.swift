@@ -65,6 +65,9 @@ open class FinalCheck {
                 }
             }
         })
+        if (discount.compare(total) == .orderedDescending) {
+            discount = total
+        }
         total = total.subtracting(discount)
     }
     
